@@ -1,10 +1,16 @@
 import { component$ } from "@builder.io/qwik";
 import { QwikLogo } from "../icons/qwik";
 import styles from "./header.module.css";
-import { useAuthSignin } from "~/routes/plugin@auth";
+import {
+  useAuthSession,
+  useAuthSignin,
+  useAuthSignout,
+} from "~/routes/plugin@auth";
 
 export default component$(() => {
   const signIn = useAuthSignin();
+  const session = useAuthSession();
+  const signOut = useAuthSignout();
 
   return (
     <header class={styles.header}>
@@ -39,16 +45,33 @@ export default component$(() => {
               Tutorials
             </a>
           </li>
-          <button
-            onClick$={() =>
-              signIn.submit({
-                providerId: "github",
-                options: { callbackUrl: "http://localhost:5173/demos" },
-              })
-            }
-          >
-            Sign In
-          </button>
+          <li>
+            <span>{session.value?.user?.email}</span>
+          </li>
+          <li>
+            <h1>{session.value?.user?.name}</h1>
+          </li>
+          <li>
+            {session.value?.user === undefined && (
+              <button
+                onClick$={() =>
+                  signIn.submit({
+                    providerId: "github",
+                    options: { callbackUrl: "http://localhost:5173" },
+                  })
+                }
+              >
+                Sign In
+              </button>
+            )}
+          </li>
+          <li>
+            {session.value?.user !== undefined && (
+              <button onClick$={() => signOut.submit({ callbackUrl: "/" })}>
+                Sign Out
+              </button>
+            )}
+          </li>
         </ul>
       </div>
     </header>

@@ -29,16 +29,28 @@
     "@builder.io/qwik": "^1.4.3",
     "@builder.io/qwik-auth": "0.1.1",
     "@builder.io/qwik-city": "^1.4.3",
+    "@builder.io/qwik-react": "0.5.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.0",
+    "@mui/x-data-grid": "^6.4.0",
     "@types/eslint": "^8.56.2",
     "@types/node": "^20.11.6",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "eslint": "^8.56.0",
     "eslint-plugin-qwik": "^1.4.3",
     "prettier": "^3.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "typescript": "5.3.3",
     "undici": "*",
     "vite": "^5.0.12",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^4.30.3"
   }
 }
