@@ -6,19 +6,18 @@ import {
 } from "@builder.io/qwik";
 import { type DocumentHead, useLocation } from "@builder.io/qwik-city";
 import styles from "./flower.css?inline";
-import { useAuthSession } from "~/routes/plugin@auth";
 import Email from "~/components/starter/email/email";
 
 export default component$(() => {
   useStylesScoped$(styles);
   const loc = useLocation();
-  const session = useAuthSession();
 
   const state = useStore({
     count: 0,
     number: 20,
   });
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     const timeout = setTimeout(() => (state.count = 1), 500);
     cleanup(() => clearTimeout(timeout));
